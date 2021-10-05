@@ -7,10 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="bmstable" content="header.json" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
@@ -25,41 +27,33 @@
     <div class="container">
 
         <div class="alert alert-success mb-3" role="alert">
-            <p>乱打が苦手なので純粋に乱打だけ練習できる譜面を集めました。</p>
-            <p class="m-0">次期難易度表フォーマット対応。難易度表の読み込みと表示に数秒かかります。</p>
+            <p>乱打が苦手すぎるので、純粋に乱打だけ練習できる譜面を集めました。次期難易度表フォーマット対応。</p>
+            <p>難易度表の読み込みと表示に数秒かかります。</p>
             <hr>
-            <p>難易度は<a href="http://walkure.net/hakkyou/bms.html">発狂BMS 難度推定表</a>のノマゲ難度(小数点以下切り捨て)を元に設定し、BPM・Titleでソートしています。</p>
-            <div class="card bg-light">
-                <div class="card-header" role="button" data-toggle="collapse" data-target="#collapseDiscription" aria-expanded="false" aria-controls="collapseDiscription">詳細説明</div>
-                <div class="collapse card-body" id="collapseDiscription">
-                    <p class="mb-1">この表で扱う乱打の定義:</p>
-                    <ul class="list-unstyled">
-                    <li><p class="m-0 pl-3">任意のBPM(125～189)における16分相当の間隔について考えたとき、隣接したタイミングで同じ鍵盤を含まない2鍵盤以上の同時押しが1小節以上続く配置。</p>
-                    <li class="list-inline-item">
-                        <ul>
-                        <li><p class="m-0 small text-muted ">OAA-γやG e n g a o z oの差分によくある、同じ密度の乱打が休みなく続くものをイメージ。</p></li>
-                        <li><p class="m-0 small text-muted ">BPMは中速乱打を中心として、遅すぎるとガチ押しの範疇、早すぎるとしっかり押さなくなる、練習曲の関係でAirは対象にしたい等を考慮。</p></li>
-                        <li><p class="m-0 small text-muted ">BPM300の8分等、実質の打鍵速度が上記BPM帯の16分に相当する場合は対象に含める。</p></li>
-                        <li><p class="m-0 small text-muted ">判定ランクは問わない。NORMAL以上の判定も対象に含める。</p></li>
-                        </ul>
-                    </li>
-                    </ul>
-                    <p class="mb-0">上記の定義に当てはまる配置をなるべく多く含む譜面を選定する。</p>
-                    <hr>
-                    <p class="mb-1">逆に、以下のようなモノは対象外とする。</p>
-                    <ul>
-                    <li><p class="m-0">乱打の中に1つ以下の鍵盤を押下するタイミングが存在する配置 <span class="small text-muted text-nowrap">(同時押しが途切れる乱打、単発の乱打)</span></p></li>
-                    <li><p class="m-0">16分相当より長い間隔を含む配置 <span class="small text-muted text-nowrap">(単純な同時押し)</span></p></li>
-                    <li><p class="m-0">16分相当より短い間隔を含む配置 <span class="small text-muted text-nowrap">(ディレイ、ズレ)</span></p></li>
-                    <li><p class="m-0">隣接したタイミングで同じ鍵盤を含む同時押しが存在する配置 <span class="small text-muted text-nowrap">(縦連、ガチ押し)</span></p></li>
-                    <li><p class="m-0">上記の定義に当てはまるが、4分以下の間隔で皿が複合する配置 <span class="small text-muted text-nowrap">(皿複合　例:★8 Air -AFOTHER-)</span></p></li>
-                    <li><p class="m-0">上記の定義に当てはまるが、休憩地帯の占める割合が大きい譜面 <span class="small text-muted text-nowrap">(練習密度が低い)</span></p></li>
-                    <li><p class="m-0">同程度の難易度と比較したとき、TOTAL値が著しく低い譜面 <span class="small text-muted text-nowrap">(極端な低TOTAL　例:★4 Liberte-SuperSaw Epic mix- -ANOTHER-)</span></p></li>
-                    </ul>
-                    <hr>
-                    <p class="mb-0">一先ず発狂難易度表からそれらしい譜面をピックアップ。順次再プレイし、上記と照らし合わせて不適当な場合には後ほど除外します。</p>
-                </div>
-            </div>
+            <p class="mb-0">この表における乱打の定義:</p>
+            <ul>
+            <li><p class="mb-0">任意のBPM(125～189)における16分相当の間隔について考えたとき、隣接したタイミングで同じ鍵盤を含まない2鍵盤以上の同時押しが1小節以上続く配置。</p>
+            <li class="list-inline-item">
+                <ul>
+                <li><p class="mb-0">OAA-γやG e n g a o z oの差分によくある、ひたすら同じ密度の乱打が休みなく続くものをイメージください。</p></li>
+                <li><p class="mb-0">BPMの範囲は中速乱打を中心として考え、遅すぎるとガチ押しの範疇となる、早すぎるとしっかり押さなくなる、練習曲の関係でAirは対象にしたい等を考慮。</p></li>
+                </ul>
+            </li>
+            </ul>
+            <p class="mb-0">上記の定義に当てはまる配置をなるべく多く含む譜面を選定する。</p>
+            <p class="mb-0">このとき、判定ランク(Judge Rank)は問わない。NORMAL以上の判定も対象に含める。</p>
+            <p class="mb-0">逆に以下のようなモノは定義外とします。</p>
+            <ul>
+            <li><p class="mb-0">乱打の中に1つ以下の鍵盤を押下するタイミングが存在する配置 (同時押しが途切れる乱打、単発の乱打)</p></li>
+            <li><p class="mb-0">16分相当より長い間隔を含む配置 (単純な同時押し)</p></li>
+            <li><p class="mb-0">16分相当より短い間隔を含む配置 (ディレイ、ズレ)</p></li>
+            <li><p class="mb-0">隣接したタイミングで同じ鍵盤を含む同時押しが存在する配置 (縦連、ガチ押し)</p></li>
+            <li><p class="mb-0">上記の定義に当てはまるが、4分以下の間隔で皿が複合する配置 (皿複合　例:★8 Air -AFOTHER-)</p></li>
+            <li><p class="mb-0">上記の定義に当てはまるが、休憩地帯の占める割合が大きい譜面 (練習密度が低い)</p></li>
+            <li><p class="mb-0">同程度の難易度と比較したとき、TOTAL値が著しく低い譜面 (極端な低TOTAL　例:★4 Liberte-SuperSaw Epic mix- -ANOTHER-)</p></li>
+            </ul>
+            <p class="mb-0">一先ず発狂難易度表からそれらしい譜面をピックアップ。順次再プレイし、上記と照らし合わせて不適当な場合には後ほど除外します。</p>
+            <p class="mb-0">難易度は<a href="http://walkure.net/hakkyou/bms.html">発狂BMS 難度推定表</a>のノマゲ難度(小数点以下切り捨て)を元に設定し、BPM・Titleでソートしています。</p>
         </div>
 
 
